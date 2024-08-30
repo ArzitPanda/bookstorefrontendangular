@@ -1,0 +1,26 @@
+.mat-toolbar {
+    background-color: #3f51b5; /* Primary color */
+    color: white;
+  }
+  
+
+  .active-link {
+    background-color: #ffffff; /* Active link hover color */
+    color: white;
+  }
+  
+  button.mat-button.active-link {
+    background-color: #ff4081; /* Active link color */
+    color: white;
+  }
+  
+  button.mat-stroked-button.active-link {
+    border-color: #ff4081; /* Active link border color */
+    color: #ff4081;
+  }
+  
+  button.mat-stroked-button.active-link:hover {
+    background-color: #ffffff; /* Active link hover color */
+    color: white;
+  }
+  

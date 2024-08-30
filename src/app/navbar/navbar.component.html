@@ -1,0 +1,11 @@
+<mat-toolbar color="primary" class="flex justify-between items-center">
+  <span class="text-2xl font-bold cursor-pointer"  routerLink="/user">BookMania</span>
+  <div class="flex gap-x-4">
+    <button mat-button routerLink="orders"   routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Order</button>
+    <button mat-button routerLink="settings" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Settings</button>
+    <button mat-stroked-button routerLink="cart" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Cart</button>
+  </div>
+</mat-toolbar>
+
+
+  

@@ -1,0 +1,8 @@
+<div class="grid grid-cols-6">
+<div class="col-span-6 text-3xl uppercase px-6 my-6">
+    my orders 
+</div>
+    <div *ngFor="let order of orderItem" class="col-span-2">
+        <app-orderitem [order]="order"></app-orderitem>
+      </div>
+</div>
