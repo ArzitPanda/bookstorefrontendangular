@@ -16,7 +16,8 @@ export class BookCardComponent {
   @Input() book!: BookResponse;
   @Output() addToCart = new EventEmitter<void>();
 
-  onAddToCart(): void {
+  onAddToCart(event:any): void {
+    event.stopPropagation();
     this.addToCart.emit();
   }
 }

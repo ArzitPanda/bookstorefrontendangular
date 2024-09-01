@@ -1,11 +1,13 @@
-<mat-toolbar color="primary" class="flex justify-between items-center">
-  <span class="text-2xl font-bold cursor-pointer"  routerLink="/user">BookMania</span>
-  <div class="flex gap-x-4">
-    <button mat-button routerLink="orders"   routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Order</button>
+<mat-toolbar color="primary" class="flex justify-between items-center" [ngStyle]="{'background-color': '#007bff'}">
+  <span class="text-2xl font-bold cursor-pointer" routerLink="/user">BookMania</span>
+  
+  <div class="flex items-center gap-x-4">
+    <span *ngIf="userDetails">{{ userDetails.email }}</span>
+    
+    <button mat-button routerLink="orders" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Order</button>
     <button mat-button routerLink="settings" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Settings</button>
-    <button mat-stroked-button routerLink="cart" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Cart</button>
+    <button mat-stroked-button routerLink="cart" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      Cart ({{ userDetails?.cartItemLength || 0 }})
+    </button>
   </div>
 </mat-toolbar>
-
-
-  

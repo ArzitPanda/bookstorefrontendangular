@@ -1,0 +1,30 @@
+mat-sidenav-container {
+    height: calc(100vh - 64px);
+    border-radius: 0;
+   
+  }
+  mat-sidenav {
+    border-right: 0;
+    width: 200px;
+    border-right: .5px solid rgba(62, 59, 59, 0.284);
+  }
+
+  mat-nav-list
+  {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  .mat-list-item {
+    display: flex;
+    align-items: center;
+  }
+  .mat-list-item mat-icon {
+    margin-right: 8px;
+  }
+
+  .mat-toolbar {
+    background-color: #4285F4;
+    color: white;
+
+    }

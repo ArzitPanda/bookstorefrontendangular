@@ -24,7 +24,7 @@ export class UserHomeComponent implements OnInit {
   priceRange: number = 1000;
   books: BookResponse[] = [];
   sortKey: string = 'name';
-  page: number = 1;
+  page: number = 0;
   totalElements: number = 0;
  
   constructor(private bookService: BookService,private cartService:CartService) {}
@@ -34,13 +34,13 @@ export class UserHomeComponent implements OnInit {
   }
 
   fetchBooks(): void {
-    this.bookService.getBooks(this.page - 1, 5).subscribe(response => {
+    this.bookService.getBooks(this.page , 5).subscribe(response => {
       this.books = response.content;
       this.totalElements = response.totalElements;
     });
   }
   onPageChange(event: any): void {
-    this.page = event.pageIndex + 1;
+    this.page = event.pageIndex ;
     this.fetchBooks();
   }
 
