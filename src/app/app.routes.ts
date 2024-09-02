@@ -13,6 +13,9 @@ import { AdminProductComponent } from '../component/admin/admin-product/admin-pr
 import { OrderAdminComponent } from '../component/admin/order-admin/order-admin.component';
 
 export const routes: Routes = [
+    {
+        path:"",redirectTo:"user",pathMatch:'full'
+    },
     
         {
             path:"login",component:LoginComponent,
@@ -45,6 +48,7 @@ export const routes: Routes = [
     {
         path:"admin",component:AdminDashBoardComponent,canActivate:[AuthGuard],
         children:[
+            {path:'',pathMatch:'full',redirectTo:"product"},
             {path:'product',component:AdminProductComponent},
             {path:'order',component:OrderAdminComponent}
         ]

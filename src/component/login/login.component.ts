@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthserviceService } from '../../services/authservice.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private loginService:AuthserviceService,
-    private router: Router
+    private router: Router,
+    private userService:UserService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -43,16 +45,23 @@ export class LoginComponent {
   onSubmit(): void {
     if (this.loginForm.valid) {
       this.loginService.login(this.loginForm.value).subscribe(
-        (response) => {
+       {
+        next: (response) => {
           // Handle successful login
+
+        
           console.log(response);
+          if(response)
           this.router.navigate(['/user']);
         },
-        (error) => {
+        error: (error) => {
           console.log(error);
           // Handle login error
           console.error('Login failed', error);
-        }
+        },
+    
+       }
+       
       );
 
 }

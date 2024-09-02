@@ -35,4 +35,7 @@ export class ProductPageComponent implements OnInit {
   toggleReviews(): void {
     this.showReviews = !this.showReviews;
   }
+
+
+  
 }

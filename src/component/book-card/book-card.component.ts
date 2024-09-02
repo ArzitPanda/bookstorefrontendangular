@@ -8,16 +8,22 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-book-card',
   standalone: true,
-  imports: [MatCardModule,CommonModule,MatIconModule,RouterModule],
+  imports: [MatCardModule,CommonModule,MatIconModule,RouterModule,MatIconModule],
   templateUrl: './book-card.component.html',
   styleUrl: './book-card.component.css'
 })
 export class BookCardComponent {
   @Input() book!: BookResponse;
   @Output() addToCart = new EventEmitter<void>();
+  @Output() addToWishList = new EventEmitter<void>();
 
   onAddToCart(event:any): void {
     event.stopPropagation();
     this.addToCart.emit();
+  }
+
+  onAddtoWishList(event:any):void{
+    event.stopPropagation();
+    this.addToWishList.emit()
   }
 }

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { CartItemResponseDto } from '../../model/CartItemResponseDto';
 import { OrderserviceService } from '../../services/orderservice.service';
 import { OrderRequestItem } from '../../model/OrderRequestItem';
@@ -17,7 +17,7 @@ import { OrderRequestItem } from '../../model/OrderRequestItem';
 })
 export class DialogComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: CartItemResponseDto[],private OrderService:OrderserviceService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: CartItemResponseDto[],private OrderService:OrderserviceService,private dialogRef:MatDialogRef<DialogComponent>) {
 
     console.log(data);
   }
@@ -34,6 +34,8 @@ export class DialogComponent {
     
   
   )
+  this.dialogRef.close()
+  
 
   }
 

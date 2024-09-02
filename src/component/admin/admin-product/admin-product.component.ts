@@ -65,6 +65,16 @@ export class AdminProductComponent  implements OnInit {
    
   }
 
+
+  deletebook(bookId:number):any
+  {
+    this.bookService.deleteBook(bookId).subscribe({
+      next:(response)=>console.log(response),
+      error:(error)=>console.log(error)
+      
+    })
+  }
+
   openBottomSheet(): void {
     this.bottomSheet.open(AdminEditBottomSheetComponent);
   }
@@ -98,9 +108,10 @@ export class AdminProductComponent  implements OnInit {
     console.log('Editing book:', book);
   }
 
-  deleteBook(id: number) {
-    console.log('Deleting book with id:', id);
-  }
+
+  
+
+ 
 
   onSubmit() {
     if (this.bookForm.valid) {

@@ -34,6 +34,7 @@ export class AuthGuard implements CanActivate {
         }
         this.userService.setUserDetails(userDetails);
         if (userDetails.role === 'ADMIN') {
+          
           return true; 
         }
 

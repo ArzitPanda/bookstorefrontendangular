@@ -6,6 +6,23 @@
     
     <button mat-button routerLink="orders" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Order</button>
     <button mat-button routerLink="settings" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Settings</button>
+    <div>
+      <button mat-button class="relative text-white" (click)="onWishListToggle()" >wishlist</button>
+      <div *ngIf="isWishListOpen===true" class="absolute flex flex-col items-start gap-2 justify-start bg-slate-100 rounded-md border border-gray-200 py-6 px-2 h-[500px] overflow-y-scroll w-[400px] z-30 top-14 right-10 ">
+        
+        <div class="text-blue-500 pl-2">my wishList</div>
+        <div *ngFor="let item of wishList" class="bg-white border border-gray-400 w-full mx-2 text-black rounded-lg shadow-lg overflow-hidden">
+          <div class="bg-blue-500 p-2">
+            <h2 class="text-white text-xl font-bold">{{ item.name }}</h2>
+            <p class="text-white">{{ item.description }}</p>
+          </div>
+          <div class="p-4">
+            <p class="text-gray-700">Price: {{ item.price }}</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
     <button mat-stroked-button routerLink="cart" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
       Cart ({{ userDetails?.cartItemLength || 0 }})
     </button>
