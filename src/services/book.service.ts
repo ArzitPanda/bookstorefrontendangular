@@ -53,6 +53,14 @@ console.log(queryParams)
 }
 
 
+updateBook(bookRequest:any,bookId:number):Observable<any>
+{
+  
+  return this.http.put(`${this.base_url+"books/"+bookId}`,{name:bookRequest.name,quantity:bookRequest.quantity,description:bookRequest.description,price:bookRequest.price,authorName:bookRequest.quantity,discountPrice:bookRequest.discountPrice});
+  
+}
+
+
   deleteBook(bookId:number):Observable<any>
   {
     return this.http.delete(this.base_url+"books/"+bookId);

@@ -78,8 +78,8 @@ export class AdminProductComponent  implements OnInit {
     })
   }
 
-  openBottomSheet(): void {
-    this.bottomSheet.open(AdminEditBottomSheetComponent);
+  openBottomSheet(book:BookResponse): void {
+    this.bottomSheet.open(AdminEditBottomSheetComponent,{data:book});
   }
 
   loadbooks()
@@ -107,7 +107,7 @@ export class AdminProductComponent  implements OnInit {
 
   editBook(book: BookResponse) {
     // Implement edit functionality
-    this.openBottomSheet()
+    this.openBottomSheet(book)
     console.log('Editing book:', book);
   }
 

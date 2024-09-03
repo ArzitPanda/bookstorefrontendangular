@@ -1,23 +1,35 @@
-<p>admin-edit-bottom-sheet works!</p>
-<mat-nav-list>
-    <a href="https://keep.google.com/" mat-list-item >
-      <span mat-line>Google Keep</span>
-      <span mat-line>Add to a note</span>
-    </a>
-  
-    <a href="https://docs.google.com/" mat-list-item >
-      <span mat-line>Google Docs</span>
-      <span mat-line>Embed in a document</span>
-    </a>
-  
-    <a href="https://plus.google.com/" mat-list-item >
-      <span mat-line>Google Plus</span>
-      <span mat-line>Share with your friends</span>
-    </a>
-  
-    <a href="https://hangouts.google.com/" mat-list-item >
-      <span mat-line>Google Hangouts</span>
-      <span mat-line>Show to your coworkers</span>
-    </a>
-  </mat-nav-list>
-  
+<div>
+  <h2>Edit Book</h2>
+<form [formGroup]="editBookForm" (ngSubmit)="save()">
+ <div class="grid grid-cols-6  place-items-center">
+  <mat-form-field appearance="fill" class="col-span-6 w-full ">
+    <mat-label>name</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="col-span-6  w-full ">
+    <mat-label>Author</mat-label>
+    <input matInput formControlName="author">
+  </mat-form-field>
+
+<div class="col-span-6 w-full flex items-start justify-center gap-2">
+  <mat-form-field appearance="fill" class="col-span-2 flex ">
+    <mat-label>discountPrice</mat-label>
+    <input matInput formControlName="discountPrice" type="number">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="col-span-2  flex ">
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price" type="number">
+  </mat-form-field>
+</div>
+
+  <mat-form-field appearance="fill" class="col-span-6 w-full">
+    <mat-label>stock</mat-label>
+    <input matInput formControlName="quantity" type="number">
+  </mat-form-field>
+ </div>
+ 
+  <button class="bg-blue-500 px-4 py-2 mx-2 hover:bg-blue-600 rounded-md min-w-24 text-white" type="submit" [disabled]="editBookForm.invalid">Save</button>
+  <button class="bg-red-500 px-4 py-2 hover:bg-red-600 rounded-md min-w-24 text-white" mat-button type="button" (click)="cancel()">Cancel</button>
+</form>
+</div>
