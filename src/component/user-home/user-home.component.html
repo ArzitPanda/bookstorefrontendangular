@@ -1,5 +1,5 @@
 
-<div class="w-full flex bg-gray-50 sticky items-center justify-between p-4 z-20">
+<div class="w-full flex bg-blue-900 sticky items-center justify-between p-4 z-20 border-b border-slate-300">
  
   <mat-form-field  class="w-1/6" >
     <mat-label>Sort By</mat-label>
@@ -10,15 +10,17 @@
     </mat-select>
   </mat-form-field>
   <div class="w-4/6 bg-white h-12 flex gap-2 rounded-sm border border-slate-3 00">
-   <div class="bg-gray-100 w-16 flex items-center justify-center">
+   <div class="bg-blue-900 p-0 m-0 text-white w-16 flex items-center justify-center">
     <mat-icon>search</mat-icon>
    </div>
     <input   type="text" class="w-full  border-none outline-none" placeholder="search product ..." [value]="search" (change)="onSearchChange($event)"/>
   </div>
 </div>
 <div class="w-full flex ">
-  <div class="w-3/12 h-auto z-0 bg-white p-4 shadow-lg ">
+  <div class="w-3/12 h-auto z-0 bg-white p-4 shadow-lg border-r border-slate-300 ">
+  
     <div class="mt-12">
+      
     
       <!-- Most Rated Filter -->
       <mat-form-field appearance="fill" class="w-full mb-4">
@@ -48,7 +50,7 @@
       
         <div class="flex w-80  justify-between text-gray-600">
           <mat-slider min="100" max="2000" class="w-80" discrete="true"
-          
+          style="width: 100%; margin-top: 1rem;"
           >
             <input [(value)]="minPrice"   matSliderStartThumb>
             <input [(value)]="maxPrice" matSliderEndThumb>

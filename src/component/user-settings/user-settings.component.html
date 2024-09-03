@@ -1,1 +1,43 @@
-<p>user-settings works!</p>
+<div class="container mx-auto p-6 max-w-2xl">
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <div class="text-2xl font-semibold text-gray-800">{{ address ? 'Update Address' : 'Add Address' }}</div>
+      </div>
+      <div class="p-6">
+        <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+          <!-- Address Type Select -->
+          <div class="mb-6">
+            <label for="addressType" class="block text-sm font-medium text-gray-700 mb-2">Address Type</label>
+            <select id="addressType" formControlName="addressType" class="form-select block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+              <option *ngFor="let type of AddressType | keyvalue" [value]="type.value">{{ type.value }}</option>
+            </select>
+          </div>
+  
+          <!-- Full Address Input -->
+          <div class="mb-6">
+            <label for="fullAddress" class="block text-sm font-medium text-gray-700 mb-2">Full Address</label>
+            <input id="fullAddress" formControlName="fullAddress" type="text" class="form-input block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" />
+          </div>
+  
+          <!-- City Input -->
+          <div class="mb-6">
+            <label for="city" class="block text-sm font-medium text-gray-700 mb-2">City</label>
+            <input id="city" formControlName="city" type="text" class="form-input block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" />
+          </div>
+  
+          <!-- State Input -->
+          <div class="mb-6">
+            <label for="state" class="block text-sm font-medium text-gray-700 mb-2">State</label>
+            <input id="state" formControlName="state" type="text" class="form-input block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" />
+          </div>
+  
+          <!-- Buttons -->
+          <div class="flex justify-end gap-4">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Save</button>
+            <button type="button" (click)="onDelete()" class="bg-red-500 text-white px-4 py-2 rounded-lg shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">Delete</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

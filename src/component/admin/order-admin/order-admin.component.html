@@ -25,10 +25,10 @@
 
         <ng-container matColumnDef="orderStatus">
           <th mat-header-cell *matHeaderCellDef> Status </th>
-          <td mat-cell *matCellDef="let element">
-            <mat-form-field appearance="fill">
-              <mat-select [(value)]="element.orderStatus" (selectionChange)="updateOrderStatus( element,$event.value)">
-                <mat-option *ngFor="let status of orderStatuses" [value]="status">
+          <td mat-cell *matCellDef="let element"class="p-4" >
+            <mat-form-field appearance="outline" style="background: white;">
+              <mat-select [(value)]="element.orderStatus" (selectionChange)="updateOrderStatus( element.orderId,$event.value)" >
+                <mat-option *ngFor="let status of orderStatuses" [value]="status" >
                   {{status}}
                 </mat-option>
               </mat-select>

@@ -46,6 +46,7 @@ blue: any="primary";
   loadOrders() {
     this.orderService.getOrders(this.currentPage,this.pageSize).subscribe({
       next:(response)=>{
+        console.log(response)
         this.dataSource.data = response.content;
         this.totalItems = response.totalElements;
       },

@@ -3,3 +3,21 @@
     background-color: #4285F4;
     color: white;
 }
+
+.mdc-text-field
+{
+    background-color: white;
+}
+mat-option
+{
+    background-color: white;
+}
+
+.mat-mdc-text-field-wrapper
+{
+    background-color: black
+}
+.mat-mdc-form-field-focus-overlay
+{
+    background-color: #4285F4;
+}
