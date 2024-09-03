@@ -42,6 +42,8 @@ export class AdminProductComponent  implements OnInit {
   pageSize:number=2;
   bookForm: FormGroup;
   responseValue:any;
+  selectedFile: File | null = null;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   
@@ -53,6 +55,7 @@ export class AdminProductComponent  implements OnInit {
       price: ['', [Validators.required, Validators.min(0)]],
       authorName: ['', Validators.required],
       discountPrice: ['', [Validators.required, Validators.min(0)]],
+    
     });
   }
 
@@ -109,14 +112,16 @@ export class AdminProductComponent  implements OnInit {
   }
 
 
-  
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+  }
 
  
 
   onSubmit() {
-    if (this.bookForm.valid) {
+    if (this.bookForm.valid && this.selectedFile) {
       console.log('Form submitted:', this.bookForm.value);
-      this.bookService.addBook(this.bookForm.value).subscribe({
+      this.bookService.addBook(this.bookForm.value,this.selectedFile).subscribe({
         next:(val)=>{
           console.log(val);
           this.snackbar.open("sucessfully added")

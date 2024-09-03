@@ -4,7 +4,8 @@
 >
   <img 
     class="w-full md:w-1/5 object-scale-down rounded-t-lg md:rounded-none md:rounded-l-lg p-2" 
-    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGLpBIhkp_KTs_j2w9xMJhr6WDTkG3Aef883RT2Wxe8ol5MPqTUqEbI0E4W7LB9k2goFA&usqp=CAU" 
+    [src]="book.bookImage?'data:image/jpeg;base64,'+book.bookImage : bookImage"
+    
     alt="Book Image"
   >
   

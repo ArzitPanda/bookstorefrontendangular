@@ -8,5 +8,6 @@ export class BookResponse {
     discountPrice!: number;
     createdAt!: Date;
     updateAt!: Date;
+    bookImage!:string|null|undefined
   }
   

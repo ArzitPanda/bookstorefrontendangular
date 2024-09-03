@@ -17,6 +17,8 @@ export class BookCardComponent {
   @Output() addToCart = new EventEmitter<void>();
   @Output() addToWishList = new EventEmitter<void>();
 
+  bookImage:string ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGLpBIhkp_KTs_j2w9xMJhr6WDTkG3Aef883RT2Wxe8ol5MPqTUqEbI0E4W7LB9k2goFA&usqp=CAU"
+
   onAddToCart(event:any): void {
     event.stopPropagation();
     this.addToCart.emit();

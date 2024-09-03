@@ -39,10 +39,19 @@ console.log(queryParams)
     return this.http.get<any>(`${this.base_url+"books/"+bookId}`);
   }
 
-  addBook(bookRequest:BookRequest):Observable<any>
-  {
-    return this.http.post(this.base_url+"books",bookRequest);
-  }
+  addBook(bookRequest: BookRequest, image: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('name', bookRequest.name);
+    formData.append('description', bookRequest.description);
+    formData.append('quantity', bookRequest.quantity.toString());
+    formData.append('price', bookRequest.price.toString());
+    formData.append('authorName', bookRequest.authorName);
+    formData.append('discountPrice', bookRequest.discountPrice.toString());
+    formData.append('image', image, image.name);
+
+    return this.http.post(this.base_url + "books", formData);
+}
+
 
   deleteBook(bookId:number):Observable<any>
   {
