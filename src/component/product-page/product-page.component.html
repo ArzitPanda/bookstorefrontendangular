@@ -4,7 +4,9 @@
   <div *ngIf="!isLoading" class="p-6 flex flex-col bg-white w-full h-screen">
    <div class="w-full flex items-center justify-center gap-24">
     <div class="flex w-1/3  items-center">
-        <img class="w-8/12 h-4/12 object-contain rounded mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGLpBIhkp_KTs_j2w9xMJhr6WDTkG3Aef883RT2Wxe8ol5MPqTUqEbI0E4W7LB9k2goFA&usqp=CAU" alt="Book Image">
+        <img class="w-8/12 h-4/12 object-contain rounded mb-4" 
+        [src]="product.bookImage?'data:image/jpeg;base64,'+product.bookImage : bookImage"
+        alt="Book Image">
        
       </div>
     <div class=" h-full mt-32" >

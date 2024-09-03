@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./product-page.component.css']
 })
 export class ProductPageComponent implements OnInit {
+  bookImage:string ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGLpBIhkp_KTs_j2w9xMJhr6WDTkG3Aef883RT2Wxe8ol5MPqTUqEbI0E4W7LB9k2goFA&usqp=CAU";
   product: any;
   isLoading = true;
   showReviews = false;
