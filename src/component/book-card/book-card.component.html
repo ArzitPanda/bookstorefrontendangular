@@ -13,7 +13,7 @@
     <div class="py-2 px-6">
       <div class="font-bold  text-blue-600 text-lg">{{ book.name }}</div>
       <p class="text-gray-600 text-lg font-semibold mb-2">{{ book.authorName }}</p>
-      <p class="text-gray-700 text-base line-clamp-3 mb-4">{{ book.description }}</p>
+      <p class="text-gray-700 text-base line-clamp-3 mb-4">{{ book.description.substring(0,20) }}</p>
     </div>
     
     <div class="mt-1 flex justify-between items-center">

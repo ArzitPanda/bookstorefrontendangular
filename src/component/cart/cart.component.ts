@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/cor
 import { CartItemResponseDto } from '../../model/CartItemResponseDto';
 import { CommonModule } from '@angular/common';
 import { CartItemComponent } from "../../app/cart-item/cart-item.component";
-import { CartService } from '../../services/cart.service';
+import { AddingType, CartService } from '../../services/cart.service';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -56,7 +56,7 @@ export class CartComponent implements OnInit  {
 
   onQuantityChange(id:number,quantity:number)
   {
-    this.cartService.addToCart(id,quantity).subscribe((res)=>{
+    this.cartService.addToCart(id,quantity,AddingType.FULL).subscribe((res)=>{
       console.log(res)
     })
 

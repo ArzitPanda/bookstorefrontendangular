@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { CartItemResponseDto } from '../../model/CartItemResponseDto';
 import { OrderserviceService } from '../../services/orderservice.service';
-import { OrderRequestItem } from '../../model/OrderRequestItem';
+import { OrderRequestItem, PaymentMethod } from '../../model/OrderRequestItem';
 
 @Component({
   selector: 'app-dialog',
@@ -27,7 +27,7 @@ export class DialogComponent {
   {
    
     const order: OrderRequestItem[] = this.data.map((ele:CartItemResponseDto)=>{
-      return {bookId:ele.bookId,quantity:ele.quantity}
+      return {bookId:ele.bookId,quantity:ele.quantity,paymentMethod:PaymentMethod.COD}
     })
 
     this.OrderService.createOrder(order).subscribe((res)=>{console.log(res)}

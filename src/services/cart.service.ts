@@ -2,6 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
+export enum AddingType
+{
+  INCREMENT="INCREMENT",
+  FULL="FULL"
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,9 +17,9 @@ export class CartService {
 
   constructor(private http: HttpClient) {}
 
-  addToCart(bookId: number, quantity: number): Observable<any> {
+  addToCart(bookId: number, quantity: number,type:AddingType): Observable<any> {
     const url = `${this.base_url}/${bookId}`;
-    const body = { quantity };
+    const body = { quantity ,type };
     return this.http.post<any>(url, body);
   }
 

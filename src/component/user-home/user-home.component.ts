@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookService } from '../../services/book.service';
-import { CartService } from '../../services/cart.service';
+import { AddingType, CartService } from '../../services/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
@@ -97,7 +97,7 @@ export class UserHomeComponent implements OnInit {
   }
 
   addToCart(bookId: number): void {
-    this.cartService.addToCart(bookId, 1).subscribe((response) => {
+    this.cartService.addToCart(bookId, 1,AddingType.INCREMENT).subscribe((response) => {
       console.log('Book added to cart:', response);
       this._snackBar.open('Add to cart sucessfully', 'Undo', {
         duration: 3000,
