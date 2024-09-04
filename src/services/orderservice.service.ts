@@ -11,8 +11,8 @@ export class OrderserviceService {
 
   constructor(private http: HttpClient) { }
 
-  createOrder(orderRequest: OrderRequestItem[]): Observable<any[]> {
-    return this.http.post<OrderResponse[]>(`${this.baseurl}`, orderRequest);
+  createOrder(value:{orderRequestList: OrderRequestItem[],paymentVerificationRequest:any}): Observable<any[]> {
+    return this.http.post<OrderResponse[]>(`${this.baseurl}`, value);
   }
 
 
