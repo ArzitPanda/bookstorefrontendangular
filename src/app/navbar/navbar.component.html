@@ -1,15 +1,20 @@
-<mat-toolbar color="primary" class="flex justify-between items-center bg-blue-700 text-white p-4">
+<mat-toolbar color="primary" class="flex justify-between items-center  text-white p-4">
+ <div class="flex items-center justify-start gap-2">
+  <button *ngIf="showBackButton" mat-icon-button (click)="goBack()">
+    <mat-icon class="text-white">arrow_back</mat-icon>
+  </button>
   <span class="text-2xl font-bold cursor-pointer hover:text-blue-300" routerLink="/user">BookMania</span>
+ </div>
 
   <div class="flex items-center gap-x-4">
 
    
 
     <div class="relative">
-      <button  class="text-white hover:bg-white  rounded-full hover:text-red-400 flex items-center justify-center px-3 py-2 transition-colors" (click)="onWishListToggle()">
-      <mat-icon>favorite</mat-icon>
+      <button  class="text-white wishlist-btn hover:bg-white  rounded-full hover:text-red-400 flex items-center justify-center px-3 py-2 transition-colors" (click)="onWishListToggle()">
+      <mat-icon class="wishlist-btn">favorite</mat-icon>
       </button>
-      <div *ngIf="isWishListOpen" class="absolute top-14 right-0 bg-white border border-gray-300 rounded-lg shadow-lg p-4 w-80 h-96 overflow-y-auto z-50">
+      <div *ngIf="isWishListOpen" class="absolute top-14 right-0 bg-white border wishlist-container border-gray-300 rounded-lg shadow-lg p-4 w-80 h-96 overflow-y-auto z-50">
         <div class="text-blue-700 font-semibold mb-4">My Wishlist</div>
         <div *ngFor="let item of wishList" class="bg-white border border-gray-200 mb-4 rounded-md shadow-sm overflow-hidden">
           <div class="bg-blue-600 text-white px-3 py-2">
@@ -23,13 +28,13 @@
       </div>
     </div>
 
-    <button  routerLink="cart" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-white text-white hover:text-blue-500 rounded-full px-4 py-1 relative transition-colors">
+    <button  routerLink="cart" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="hover:bg-white text-white hover:text-blue-500 rounded-full px-4 py-2 relative flex items-center justify-center transition-colors">
       <mat-icon >shopping_cart</mat-icon>
     
       <span *ngIf="userDetails?.cartItemLength" class="ml-1 absolute w-4 text-white h-4 -top-0 text-center text-xs bg-red-500 rounded-full  right-2 z-20">{{ userDetails?.cartItemLength }}</span>
     </button>
 
-    <div class="relative">
+    <div class="relative profile-container">
       <button mat-icon-button aria-label="Profile Menu" (click)="toggleNavMenu()">
         <mat-icon class="text-white">account_circle</mat-icon>
       </button>

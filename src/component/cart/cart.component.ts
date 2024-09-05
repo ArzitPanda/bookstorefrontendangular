@@ -58,6 +58,9 @@ export class CartComponent implements OnInit  {
   {
     this.cartService.addToCart(id,quantity,AddingType.FULL).subscribe((res)=>{
       console.log(res)
+      this.cartTotal= this.cartItems.reduce((total, cartItem) => {
+        return total + (cartItem.price *cartItem.quantity);
+      }, 0);
     })
 
   }

@@ -4,6 +4,7 @@ export class CartItemResponseDto {
     description!: string;
     quantity!: number;
     price!: number;
-    bookId!:number
+    bookId!:number;
+    bookImage!:string;
   }
   

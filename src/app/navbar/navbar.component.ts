@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { Router, RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { UserDetails, UserService } from '../../services/user.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { BookService } from '../../services/book.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -22,13 +22,28 @@ export class NavbarComponent {
   isWishListOpen:boolean =false
   wishList:any[] =[]
 isMenuOpen: boolean=false;
+showBackButton = false;
 
   constructor(private userService: UserService,
     private router:Router,
+    private location: Location,
     private wishlistService:BookService
     ,
    public dialog: MatDialog
-    ) {}
+    ) {
+
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          this.showBackButton = this.router.url !== '/user'; // Adjust this condition based on your default route
+        }
+      });
+
+
+    }
+    goBack() {
+      this.location.back();
+    }
+    
 
   ngOnInit(): void {
     this.userService.userDetails$.subscribe(details => {
@@ -37,6 +52,7 @@ isMenuOpen: boolean=false;
 
     this.fetchAllWishList()
   }
+
 
 
   logout(): void {
@@ -54,6 +70,22 @@ isMenuOpen: boolean=false;
   toggleNavMenu()
   {
     this.isMenuOpen =!this.isMenuOpen
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    const clickedInside = target.closest('.profile-container');
+    if (!clickedInside) {
+      this.isMenuOpen = false;
+    }
+    const clickedInsideWishlist = (event.target as HTMLElement).closest('.wishlist-container')
+    if(!clickedInsideWishlist && !(event.target as HTMLElement)?.classList.contains('wishlist-btn'))
+    {
+      this.isWishListOpen=false;
+    }
+
+    
   }
 
   fetchAllWishList()
